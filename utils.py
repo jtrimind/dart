@@ -20,7 +20,10 @@ def getProfitFromFinstate(finstate):
     profit = finstate.loc['당기순이익', 'thstrm_amount']
     if not isinstance(profit, str):
         profit = profit[0]
-    profit = int(profit.replace(',', ''))
+    if profit == '-':
+        profit = 0
+    else:
+        profit = int(profit.replace(',', ''))
     return profit
 
 
